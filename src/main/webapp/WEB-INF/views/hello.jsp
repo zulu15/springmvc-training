@@ -1,11 +1,31 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="ISO-8859-1"%>
-<%@ include file="/WEB-INF/views/include.jsp" %>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+	pageEncoding="ISO-8859-1"%>
+<%@ include file="/WEB-INF/views/include.jsp"%>
 <html>
-  <head><title>Hello :: Spring Application</title></head>
-  <body>
-    <h1>Hello - Spring Application</h1>
-    <p>Greetings, it is now <c:out value="${now}"/></p>
-  </body>
+<head>
+<title><fmt:message key="title" /></title>
+</head>
+<body>
+	<div class="container">
+		<h1 class="page-header text-info">
+			<fmt:message key="heading" />
+		</h1>
+		<p>
+			<fmt:message key="greeting" />
+			<c:out value="${modelo.time}" />
+		</p>
+		<h3>Products</h3>
+		<c:forEach items="${modelo.productList}" var="prod">
+			<c:out value="${prod.description}" />
+			<i>$<c:out value="${prod.price}" /></i>
+			<br>
+			<br>
+		</c:forEach>
+		<br> 
+		<hr>
+		<a class="btn btn-primary" href="<c:url value="priceincrease.htm"/>">Increase
+			Prices</a> <br>
+	</div>
+
+</body>
 </html>
