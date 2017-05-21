@@ -7,7 +7,17 @@
 	<display-name>Fincas Mendoza</display-name>
 
 
-<!-- Dispatcher servlet  -->
+
+	<context-param>
+		<param-name>contextConfigLocation</param-name>
+		<param-value>/WEB-INF/applicationContext.xml</param-value>
+	</context-param>
+
+	<listener>
+		<listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
+	</listener>
+
+	<!-- Dispatcher servlet -->
 
 	<servlet>
 		<servlet-name>app</servlet-name>
@@ -21,8 +31,8 @@
 	</servlet-mapping>
 
 
-<welcome-file-list>
-	<welcome-file>index.jsp</welcome-file>
-</welcome-file-list>
+	<welcome-file-list>
+		<welcome-file>index.jsp</welcome-file>
+	</welcome-file-list>
 
 </web-app>

@@ -1,4 +1,4 @@
-package com.fincasmendoza.repossitory;
+package com.fincasmendoza.repository;
 
 import java.util.List;
 
@@ -10,7 +10,6 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.fincasmendoza.domain.Product;
 
-
 //Spring permite creación automática de beans de acceso a datos mediante la anotación @Repository.
 @Repository(value = "productDAO")
 public class ProductDAOImpl implements ProductDAO {
@@ -19,6 +18,7 @@ public class ProductDAOImpl implements ProductDAO {
 
 	/*
 	 * Sets the entity manager.
+	 * 
 	 * @Persistence es utiliza para inyectar automáticamente el EntityManager.
 	 */
 	@PersistenceContext
@@ -26,6 +26,8 @@ public class ProductDAOImpl implements ProductDAO {
 		this.em = em;
 	}
 
+	// Transactional permite utilizar de forma transparente los rollbacks
+	// commits etc.
 	@Transactional(readOnly = true)
 	@SuppressWarnings("unchecked")
 	public List<Product> getProductList() {

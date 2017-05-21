@@ -20,6 +20,7 @@ public class ProductManagerImplTests {
 	private static final String MOUSE_DESCRIPTION = "Mouse Verbatim gamer";
 	private static final double MOUSE_PRICE = 850;
 	
+	/*
 	// será invocado previamente a cada llamada a un método de test.
 	@Before
 	public void setUp() throws Exception {
@@ -52,7 +53,7 @@ public class ProductManagerImplTests {
 	
 	
 	
-	
+	*/
 	
 	
 	

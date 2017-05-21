@@ -2,27 +2,37 @@ package com.fincasmendoza.service;
 
 import java.util.List;
 
-import com.fincasmendoza.domain.Product;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 
+import com.fincasmendoza.domain.Product;
+import com.fincasmendoza.repository.ProductDAO;
+
+@Component
 public class ProductManagerImpl implements ProductManager {
 
-	private List<Product> productList;
+	@Autowired
+	private ProductDAO productDAO;
+
+	public void setProductDAO(ProductDAO productDAO) {
+		this.productDAO = productDAO;
+	}
+
+	public ProductDAO getProductDAO() {
+		return productDAO;
+	}
 
 	public void incrementarPrecios(int porcentaje) {
-		if (productList != null) {
-			for (Product product : productList) {
-				double newPrice = product.getPrice() * (100 + porcentaje) / 100;
-				product.setPrice(newPrice);
-			}
+		for (Product product : productDAO.getProductList()) {
+			double newPrice = product.getPrice() * (100 + porcentaje) / 100;
+			product.setPrice(newPrice);
+			productDAO.saveProduct(product);
 		}
 
 	}
 
 	public List<Product> obtenerProductos() {
-		return productList;
+		return productDAO.getProductList();
 	}
 
-	public void setProductList(List<Product> productList) {
-		this.productList = productList;
-	}
 }

@@ -1,4 +1,4 @@
-package com.fincasmendoza.repossitory;
+package com.fincasmendoza.repository;
 
 import java.util.List;
 
